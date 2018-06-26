@@ -1,0 +1,54 @@
+include mixins
+doctype html
+html(lang='es')
+    head
+        title Noticias
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+
+    body(style="padding:2rem;")
+        +nav("News", "dropdown_menu")
+    // Page Content
+    .container
+        // Page Heading
+        h1.text-center
+            | #{noticia.titulo}
+        br
+        div
+            .col-md-12.text-center
+                    img.img-fluid.rounded.mb-3.mb-md-0(src='http://placehold.it/900x350', class='img-fluid img-thumbnail')
+        div
+            .row
+                .col-md-12
+                    span= Descripcion
+        br
+        div
+            .row
+                .col-md-12
+                    span #{noticia.descripcion}
+        br
+        div
+            .row
+                .col-md-12
+                    h2 Comentarios
+                br
+                each comentario in noticia.comentarios
+                    .row
+                        .col-sm-8
+                            .panel.panel-white.post.panel-shadow
+                                .post-heading
+                                    .pull-left.image
+                                        img.img-circle.avatar(src='https://cdn.icon-icons.com/icons2/1154/PNG/512/1486564400-account_81513.png',width="50" height="50", alt='user profile image')
+                                    .pull-left.meta
+                                        .title.h5
+                                            a(href='#')
+                                                b= comentario.autor
+                                        h6.text-muted.time= comentario.fecha
+                                br
+                                br
+                                .post-description
+                                    p= comentario.mensaje

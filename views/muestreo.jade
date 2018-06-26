@@ -1,0 +1,30 @@
+include mixins
+doctype html
+html(lang='es')
+    head
+        title Noticias
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+
+    body(style="padding:2rem;")
+            +nav("News", "dropdown_menu")
+    // Page Content
+    .container
+        // Page Heading
+        h1.my-4
+            | Noticias
+        br
+        // Project One
+        each item in datos
+            .row
+                .col-md-7
+                    a(href='#')
+                        img.img-fluid.rounded.mb-3.mb-md-0(src='http://placehold.it/700x300', class='img-fluid img-thumbnail')
+                .col-md-5
+                    h3= item.titulo
+                    br
+                    a.btn.btn-primary(href='news_detail/'+item.titulo) Ver

@@ -1,0 +1,49 @@
+include mixins
+doctype html
+html(lang='es')
+    head
+        title Noticias
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+
+    body(style="padding:2rem;")
+        +nav("News", "dropdown_menu")
+        // Page Heading
+        h1.my-4
+            | Número de noticias
+        br
+        // Project One
+        table.table
+            thead
+                tr
+                    th(scope='col') #
+                    th(scope='col') Título
+                    th(scope='col') Descripción
+                    th(scope='col') Categoría
+                    th(scope='col') Fecha
+                    th(scope='col') Comentarios
+                    th(scope='col') Editar
+                    th(scope='col') Eliminar
+            tbody
+                each item in datos
+                    tr
+                        th(scope='row')= item.position
+                        td= item.titulo
+                        td= item.descripcion
+                        td= item.categoria
+                        td= item.fecha
+                        td= item.comentarios.length
+                        td
+                            a(href='/news_update/'+item.titulo)
+                                button.btn.btn-info(type='button') Editar
+                        td
+                            form(method='POST' action='news_remove/'+item.titulo)
+                                input.btn.btn-danger(type='submit', value='Eliminar')
+
+        br
+        a(href='/news_crear')
+            button.btn.btn-success(type='button') Agregar noticia

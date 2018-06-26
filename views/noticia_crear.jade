@@ -1,0 +1,33 @@
+include mixins
+doctype html
+html(lang='es')
+    head
+        title Noticias
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+
+    body(style="padding:2rem;")
+    .container
+        h1.my-4
+            | Crear nueva noticia
+        br
+        form(method='POST' action='news_crear')
+            .form-row
+                .form-group.col-md-12
+                    label(for='titulo') Título
+                    input#titulo.form-control(name='titulo',type='text', placeholder='Título')
+            .form-row
+                .form-group.col-md-12
+                    label(for='descripcion') Descripción
+                    input#descripcion.form-control(name='descripcion',type='text', placeholder='Descripción')
+            .form-row
+                .form-group.col-md-12
+                    label(for='categoria') Categoría
+                    input#categoria.form-control(name='categoria',type='text', placeholder='Categoría')
+            .form-row
+                .form-group.col-md-12
+                    input.btn.btn-primary(type='submit', value='Guardar')
